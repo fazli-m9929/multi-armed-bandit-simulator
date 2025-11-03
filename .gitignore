@@ -1,0 +1,18 @@
+# Python cache and build files
+__pycache__/
+*.py[oc]
+*.egg-info/
+build/
+dist/
+wheels/
+
+# Virtual environments
+.venv/
+.env/
+
+# IDE stuff
+.vscode/
+.idea/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
