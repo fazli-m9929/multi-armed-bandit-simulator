@@ -31,8 +31,7 @@ You can:
 │   │   ├── ucb.py              # Upper Confidence Bound (UCB) agent
 │   │   └── gradient_bandit.py  # Policy gradient-based agent
 │   └── __pycache__/
-├── notebooks/
-│   └── main.ipynb              # Interactive tests and visualization
+├── main.ipynb                  # Interactive tests and visualization
 ├── pyproject.toml              # uv project configuration
 ├── README.md
 └── uv.lock                     # dependency lock file
@@ -106,7 +105,7 @@ plot_results(agents, avg_rewards, optimal_actions)
 
 ```bash
 uv sync
-uv run notebooks/main.ipynb
+uv run main.ipynb
 ```
 
 Or open the notebook in VS Code / Jupyter and explore interactively.
