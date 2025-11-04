@@ -1,7 +1,7 @@
 [project]
-name = "ten-armed-bandit"
+name = "multi-armed-bandit-simulator"
 version = "0.1.0"
-description = "Add your description here"
+description = " A clean, modular, lightweight simulator for testing and comparing different multi-armed bandit strategies, implemented in Python. It includes key exploration methods like ε-greedy, UCB, and Gradient Bandit, along with plotting and performance evaluation tools."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
