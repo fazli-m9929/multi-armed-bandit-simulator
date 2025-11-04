@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from typing import Tuple, List
 
 class KArmedBandit:
@@ -71,6 +72,43 @@ class KArmedBandit:
             int: Index of the optimal arm.
         """
         return int(np.argmax(self.means))
+    
+    def plot_distributions(self, n_samples: int = 2000) -> None:
+        """
+        Plot the reward distributions of each arm as violins.
+        Similar style to Sutton & Barto (Figure 2.1).
+        
+        Args:
+            n_samples (int): Number of samples drawn from each arm to form the violins.
+        """
+        samples = [
+            np.random.normal(self.means[i], self.stds[i], size=n_samples)
+            for i in range(self.k)
+        ]
+        
+        plt.figure(figsize=(9, 6))
+        parts = plt.violinplot(
+            samples, positions=np.arange(1, self.k + 1),
+            showmeans=False, showextrema=False
+        )
+        
+        for pc in parts['bodies']:
+            pc.set_facecolor('gray')
+            pc.set_edgecolor('black')
+            pc.set_alpha(0.7)
+        
+        # Plot the true means
+        for i, mu in enumerate(self.means, 1):
+            plt.hlines(mu, i - 0.25, i + 0.25, colors='k', lw=2)
+            plt.text(i + 0.2, mu, f"$q_*( {i} )$", va='center', fontsize=10)
+        
+        plt.axhline(0, color='k', linestyle='--', lw=1)
+        plt.xticks(np.arange(1, self.k + 1))
+        plt.xlabel("Action", fontsize=12)
+        plt.ylabel("Reward distribution", fontsize=12)
+        plt.title("Reward Distributions for Each Action")
+        plt.tight_layout()
+        plt.show()
     
     def __repr__(self) -> str:
         return (
